@@ -134,8 +134,8 @@
 
 ;; Uppstartsposition och storlek:
 ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(set-frame-size (selected-frame) 120 90)
-(set-frame-position (selected-frame) 700 0)
+(set-frame-size (selected-frame) 100 55)
+(set-frame-position (selected-frame) 500 0)
 
 
 ;; By default, I want paste operations to indent their results. I could express
@@ -448,12 +448,12 @@
 
 (setq-default TeX-engine 'xetex)
 
-;; (add-to-list 'load-path "/Users/johanthor/.emacs.d/elpa/lsp-latex-20210815.1426")
-;; (require 'lsp-latex)
-;; ;; "texlab" must be located at a directory contained in `exec-path'.
-;; ;; If you want to put "texlab" somewhere else,
-;; ;; you can specify the path to "texlab" as follows:
-;; (setq lsp-latex-texlab-executable "/usr/local/bin/texlab")
+(add-to-list 'load-path "/Users/johanthor/.emacs.d/elpa/lsp-latex-20210815.1426")
+(require 'lsp-latex)
+;; "texlab" must be located at a directory contained in `exec-path'.
+;; If you want to put "texlab" somewhere else,
+;; you can specify the path to "texlab" as follows:
+(setq lsp-latex-texlab-executable "/usr/local/bin/texlab")
 
 (with-eval-after-load "tex-mode"
  (add-hook 'tex-mode-hook 'lsp)
@@ -578,6 +578,9 @@
     (company-quickhelp-mode))
   )
 
+;; Don't let company complete numbers!
+;; https://emacs.stackexchange.com/questions/35345/how-to-turn-off-autocompletion-for-numbers-and-numbers-only-in-company-mode-in
+(setq company-dabbrev-char-regexp "[A-z:-]")
 
 ;;
 (use-package yasnippet
